@@ -142,6 +142,15 @@ def draw_house_window(sc, x_wall, y_wall, width_wall, height_wall, quarter):
 
 
 def draw_house_window_frame(sc, start_point, width, height, N):
+    """
+    Рисует раму окна с заданным количеством перегородок
+    :param sc: экран для вывода рисунка
+    :param start_point: левый верхний угол окна
+    :param width: ширина окна
+    :param height: высота окна
+    :param N: количество перегородок
+    :return:
+    """
     x_tmp, y_tmp = start_point
     dx = width / (N + 1)
     for _ in range(N):
@@ -174,6 +183,18 @@ def draw_house_roof(sc, x, y, width, height):
     polygon(sc, color, point_list)
 
 
+def convert_point(x, y, width, height):
+    """
+    Возвращает левую верхнюю точку прямоугольника по полученной опорной точке
+    :param x: координата опорной точки
+    :param y: координата опорной точки
+    :param width: ширина прямоугольника
+    :param height: высота прямоуголника
+    :return: левую верхнюю точку прямоугольника
+    """
+    return x - width // 2 - width % 2, y - height
+
+
 def run_program(fps):
     """
     Запускает программу, окно которой обновляется fps кадров в секунду
@@ -188,18 +209,6 @@ def run_program(fps):
                 pygame.quit()
                 quit()
         clock.tick(fps)
-
-
-def convert_point(x, y, width, height):
-    """
-    Возвращает левую верхнюю точку прямоугольника по полученной опорной точке
-    :param x: координата опорной точки
-    :param y: координата опорной точки
-    :param width: ширина прямоугольника
-    :param height: высота прямоуголника
-    :return: левую верхнюю точку прямоугольника
-    """
-    return x - width // 2 - width % 2, y - height
 
 
 main()
